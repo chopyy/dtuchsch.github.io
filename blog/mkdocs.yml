@@ -1,0 +1,9 @@
+site_name: dtuchsch memo
+pages:
+- Home: index.md
+- Quadrocopter:
+   - 'Getting Started PX4': 'quadrocopter/Getting-Started-with-PX4-Toolchain.md'
+theme: readthedocs
+site_author: Daniel Tuchscherer
+copyright: Daniel Tuchscherer
+site_dir: build

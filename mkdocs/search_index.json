@@ -1,0 +1,39 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Welcome to my page\n\n\nTo keep up in mind some thoughts...",
+            "title": "Home"
+        },
+        {
+            "location": "/#welcome-to-my-page",
+            "text": "To keep up in mind some thoughts...",
+            "title": "Welcome to my page"
+        },
+        {
+            "location": "/quadrocopter/Getting-Started-with-PX4-Toolchain/",
+            "text": "PX4 Toolchain Installation (Windows)\n\n\nThis article is mostly an adaption of the guideline from (https://pixhawk.org/dev/toolchain_installation_win) available on pixhawk website under category \nDeveloper Manual\n.\nFor compiling the source you do need two files:\n\n\n\n\nPX4 Toolchain\n\n\nPX4 Driver\n\n\n\n\nInitial Setup\n\n\nInstall the PX4 Toolchain and the PX4 Driver on your Microsoft Windows OS. To get an initial software setup you then have to execute the following menu command: \nStart -\n PX4 Software download\n.\n\nNote:\n You do not need to adjust the \nPATH\n settings.\n\n\nEclipse\n\n\nThe PX4 Toolchain comes with an Eclipse project you can use for development. It is recommended to start the Eclipse IDE over the specific batch file delivered by the PX4 Toolchain: \nStart -\n PX4 Eclipse\n.\n\n\n\n\nIf you're working on a 64-bit system there may be an issue starting Eclipse, because of the 64-Bit JRE / JDK. In this case you have to download either the JRE or JDK 32-bit from (http://www.oracle.com/technetwork/java/javase/downloads/index.html). \nIf Eclipse starts up it will automatically assume that your PX4 toolchain is located under C:\\px4. The PX4 Eclipse will use C:\\px4\\workspace as its workspace folder.\n\n\nImport the existing Makefile Project\n\n\n\n\nAfter starting Eclipse you have to import the PX4 Firmware Makefile project. Go to \nFile -\n New -\n  Makefile Project with Existing Code\n.\n\n\n\n\n\n\n\n\nClick on \nBrowse\n and choose \nC:\\px4\\Firmware\n as your Existing Code Location.\n\n\nAs \nToolchain for Indexer Settings\n you have to choose the Gnu Cross Compiler \nCROSS GCC\n\n\nFinish\n the \nNew Project\n wizard.\n\n\n\n\n\n\nCreating Make Targets\n\n\nThis step is important so you can build your source code and flash it onto your pixhawk hardware.\n\n\n\n\nIn Eclipse open the window \nMake Target\n.\n\n\nRight click on the project \nFirmware\n and choose \nNew\n.\n\n\n\n\n\n\n\n\n\n\nAdd the following Make Targets repeating step 2 for each target:\n\n\n\n\n\n\nall\n - builds the autopilot software (depends on target \narchives\n)\n\n\n\n\narchives\n - builds the NuttX OS\n\n\nclean\n - cleans the application layer only\n\n\ndistclean\n - cleans the application layer and the NuttX build\n\n\nupload px4fmu-v1_default\n - uploads to PX4FMU v1.x boards\n\n\nupload px4fmu-v2_default\n - uploads to PX4FMU v2.x boards\n\n\n\n\nBuild\n\n\nNote:\n Before you are able to build the source with \nmake all\n you have to build the RTOS NuttX itself by executing \nmake archives\n. This takes up to 20 minutes on a current i7 with 8 GB of RAM until it is finished. Afterwards try to execute \nmake all\n. If Eclipse is configured correctly you will be able to build the complete software and later flash it onto the controller.",
+            "title": "Getting Started PX4"
+        },
+        {
+            "location": "/quadrocopter/Getting-Started-with-PX4-Toolchain/#px4-toolchain-installation-windows",
+            "text": "This article is mostly an adaption of the guideline from (https://pixhawk.org/dev/toolchain_installation_win) available on pixhawk website under category  Developer Manual .\nFor compiling the source you do need two files:   PX4 Toolchain  PX4 Driver",
+            "title": "PX4 Toolchain Installation (Windows)"
+        },
+        {
+            "location": "/quadrocopter/Getting-Started-with-PX4-Toolchain/#initial-setup",
+            "text": "Install the PX4 Toolchain and the PX4 Driver on your Microsoft Windows OS. To get an initial software setup you then have to execute the following menu command:  Start -  PX4 Software download . Note:  You do not need to adjust the  PATH  settings.",
+            "title": "Initial Setup"
+        },
+        {
+            "location": "/quadrocopter/Getting-Started-with-PX4-Toolchain/#eclipse",
+            "text": "The PX4 Toolchain comes with an Eclipse project you can use for development. It is recommended to start the Eclipse IDE over the specific batch file delivered by the PX4 Toolchain:  Start -  PX4 Eclipse .   If you're working on a 64-bit system there may be an issue starting Eclipse, because of the 64-Bit JRE / JDK. In this case you have to download either the JRE or JDK 32-bit from (http://www.oracle.com/technetwork/java/javase/downloads/index.html). \nIf Eclipse starts up it will automatically assume that your PX4 toolchain is located under C:\\px4. The PX4 Eclipse will use C:\\px4\\workspace as its workspace folder.  Import the existing Makefile Project   After starting Eclipse you have to import the PX4 Firmware Makefile project. Go to  File -  New -   Makefile Project with Existing Code .     Click on  Browse  and choose  C:\\px4\\Firmware  as your Existing Code Location.  As  Toolchain for Indexer Settings  you have to choose the Gnu Cross Compiler  CROSS GCC  Finish  the  New Project  wizard.    Creating Make Targets  This step is important so you can build your source code and flash it onto your pixhawk hardware.   In Eclipse open the window  Make Target .  Right click on the project  Firmware  and choose  New .      Add the following Make Targets repeating step 2 for each target:    all  - builds the autopilot software (depends on target  archives )   archives  - builds the NuttX OS  clean  - cleans the application layer only  distclean  - cleans the application layer and the NuttX build  upload px4fmu-v1_default  - uploads to PX4FMU v1.x boards  upload px4fmu-v2_default  - uploads to PX4FMU v2.x boards",
+            "title": "Eclipse"
+        },
+        {
+            "location": "/quadrocopter/Getting-Started-with-PX4-Toolchain/#build",
+            "text": "Note:  Before you are able to build the source with  make all  you have to build the RTOS NuttX itself by executing  make archives . This takes up to 20 minutes on a current i7 with 8 GB of RAM until it is finished. Afterwards try to execute  make all . If Eclipse is configured correctly you will be able to build the complete software and later flash it onto the controller.",
+            "title": "Build"
+        }
+    ]
+}
