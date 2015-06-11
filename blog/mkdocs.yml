@@ -3,6 +3,10 @@ pages:
 - Home: index.md
 - Quadrocopter:
    - 'Getting Started PX4': 'quadrocopter/Getting-Started-with-PX4-Toolchain.md'
+- ROS:
+   - 'Installing ROS indigo': 'ros/Installing-ROS.md'
+- Linux:
+   - 'Realtime-Preempt Kernel on Raspberry PI': 'linux/RT-PREEMPT-on-Raspberry-PI.md'
 theme: readthedocs
 site_author: Daniel Tuchscherer
 copyright: Daniel Tuchscherer

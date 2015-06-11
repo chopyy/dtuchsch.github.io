@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Realtime-Preempt Kernel on Raspberry PI - dtuchsch memo</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Realtime-Preempt Kernel on Raspberry PI";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> dtuchsch memo</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Quadrocopter</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../quadrocopter/Getting-Started-with-PX4-Toolchain/">Getting Started PX4</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>ROS</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../ros/Installing-ROS/">Installing ROS indigo</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Linux</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Realtime-Preempt Kernel on Raspberry PI</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#enable-real-time-capabilities-of-the-mainline-kernel-on-the-raspberry-pi">Enable real-time capabilities of the mainline kernel on the Raspberry PI</a></li>
+                
+                    <li><a class="toctree-l4" href="#downloading-and-patching">Downloading and Patching</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">dtuchsch memo</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Linux &raquo;</li>
+        
+      
+    
+    <li>Realtime-Preempt Kernel on Raspberry PI</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="enable-real-time-capabilities-of-the-mainline-kernel-on-the-raspberry-pi">Enable real-time capabilities of the mainline kernel on the Raspberry PI</h1>
+<p>Embedded systems often need hard realtime capabilities for driving actuators or reading out sensor data at a given time. This guideline shows how to apply the realtime kernel from OSADL on a Raspberry PI (RPI) v2. We will go through downloading the sources, cross-compiling the kernel on a PC architecture and finally flashing it on the RPI.</p>
+<p>I'm cross-compiling the kernel on an Intel i7 with 8 GB of RAM in Ubuntu as my host system, because it will compile a lot faster than compiling the kernel on the RPI itself.</p>
+<h2 id="downloading-and-patching">Downloading and Patching</h2>
+<p>Check the kernel version of your RPI:</p>
+<pre><code class="shell">uname -r
+# ...
+</code></pre>
+
+<p>Download both the kernel as well as the corresponding RT patch. We will work with <strong>kernel version 3.18.11</strong>:</p>
+<pre><code class="shell">cd /usr/src/kernels
+sudo wget https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.18.11.tar.xz
+sudo wget https://www.kernel.org/pub/linux/kernel/projects/rt/3.18/older/patch-3.18.11-rt7.patch.xz
+</code></pre>
+
+<p>If directory kernels does not exist create it:</p>
+<pre><code class="shell">cd /usr/src/
+mkdir kernels
+</code></pre>
+
+<p>Unpack the kernel:</p>
+<pre><code class="shell">sudo tar -xvJf linux-3.18.11.tar.xz
+</code></pre>
+
+<p>Rename the kernel directory:</p>
+<pre><code class="shell">sudo mv linux-3.18.11 linux-3.18.11-rt
+</code></pre>
+
+<p>Change the directory into the unpacked kernel and patch it with the RT PREEMPT patch.</p>
+<pre><code class="shell">sudo -i
+cd /usr/src/kernels/linux-3.18.11-rt/
+sudo xz -dc /usr/src/kernels/patch-3.18.11-rt7.patch.xz | patch -p1
+</code></pre>
+
+<p>Before you are able to configure the kernel make sure you installed all necessary dependencies:</p>
+<pre><code class="shell">sudo apt-get install libncurses5-dev
+</code></pre>
+
+<p>Now run the first make command for configuring your kernel:</p>
+<pre><code class="shell">sudo make menuconfig
+</code></pre>
+
+<p>This will start up a graphical interface. The realtime settings are under <em>Processor type and features</em>. Select the Preemption Model and choose **Fully Preemptible Kernel (RT) like in the screenshot below:
+<img alt="" src="../gfx/Preemption_Model_menuconfig.png" /></p>
+<p>If this option is not available the patch was not successful and something went completly wrong. Try to patch the downloaded kernel once again.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../../ros/Installing-ROS/" class="btn btn-neutral" title="Installing ROS indigo"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Daniel Tuchscherer</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../ros/Installing-ROS/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+
+</body>
+</html>
