@@ -180,17 +180,44 @@ cd /usr/src/kernels/linux-3.18.11-rt/
 sudo xz -dc /usr/src/kernels/patch-3.18.11-rt7.patch.xz | patch -p1
 </code></pre>
 
+<h3 id="cross-compiler">Cross-Compiler</h3>
+<p>There are more than one ARM cross compilers for Ubuntu Linux. We will use the provided compiler from the <em>Raspberry Pi tools section</em> on GitHub.</p>
+<pre><code class="shell">cd /opt/
+git clone git://github.com/raspberrypi/tools.git --depth 1
+</code></pre>
+
+<h3 id="configuration">Configuration</h3>
 <p>Before you are able to configure the kernel make sure you installed all necessary dependencies:</p>
 <pre><code class="shell">sudo apt-get install libncurses5-dev
 </code></pre>
 
-<p>Now run the first make command for configuring your kernel:</p>
-<pre><code class="shell">sudo make menuconfig
+<p>We also need to copy the kernel <strong>.config file</strong> from the RPI into the build directory.
+First we back up our default config. Then we will transfer the RPI .config from the embedded device onto the PC.</p>
+<pre><code class="shell">sudo mv .config .config_backup
+sudo rsync -avz -e ssh pi@141.7.25.81:/proc/config.gz /usr/src/kernels/linux-3.18.11-rt/.config
 </code></pre>
 
-<p>This will start up a graphical interface. The realtime settings are under <em>Processor type and features</em>. Select the Preemption Model and choose **Fully Preemptible Kernel (RT) like in the screenshot below:
+<p>Set an environment variable for the prefix of the cross compiler toolchain:</p>
+<pre><code class="shell">export CCPREFIX=/opt/rpi-tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-
+</code></pre>
+
+<p>In the same terminal where you exported the environment variable run your first make command to configure your kernel:</p>
+<pre><code class="shell">sudo make ARCH=arm CROSS_COMPILE=${CCPREFIX} menuconfig
+</code></pre>
+
+<p>This make target will start up a graphical interface shown below. </p>
+<p><img alt="" src="../gfx/Menuconfig_Start.png" /></p>
+<p>For PC architectures the realtime settings are under <em>Processor type and features</em>. Select the <strong>Preemption Model</strong> and choose <strong>Fully Preemptible Kernel (RT)</strong> like in the screenshot below:
 <img alt="" src="../gfx/Preemption_Model_menuconfig.png" /></p>
-<p>If this option is not available the patch was not successful and something went completly wrong. Try to patch the downloaded kernel once again.</p>
+<p>If you configured the ARM build correctly the Preemption Model of the PREEMPT patch can be found under <em>Kernel Features</em> and then <strong>Preemption Model</strong> like shown in the following image:</p>
+<p><img alt="" src="../gfx/Preemption_Model_menuconfig_ARM.png" /></p>
+<p>Also choose <strong>Fully Preemptible Kernel (RT)</strong>.</p>
+<p><strong>Note:</strong> If this option is not available the patch was not successful and something went completly wrong. Try to patch the downloaded kernel once again.</p>
+<p>You can now compile the kernel on the PC. If you are working on a multi-processor platform enable parallel jobs for a quicker build switching on <em>-j #n</em> where #n is the number of parallel jobs that will be used. This should be 1.5 times your number of cores. Using this option makes the build about 48% faster on a modern Intel/AMD processor.</p>
+<pre><code class="shell">sudo make ARCH=arm CROSS_COMPILE=${CCPREFIX} -j5
+</code></pre>
+
+<p>Now you can imagine how long it would take to compile the kernel directly on the RPI itself (more than 3 hrs I guess), by only enabling the parallel jobs.</p>
               
             </div>
           </div>
