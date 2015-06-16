@@ -1,4 +1,4 @@
-# Enable real-time capabilities of the mainline kernel on the Raspberry PI
+# Enable real-time capabilities of the linux kernel on the Raspberry PI
 Embedded systems often need hard realtime capabilities for driving actuators or reading out sensor data at a given time. This guideline shows how to apply the realtime kernel from OSADL on a Raspberry PI (RPI) v2. We will go through downloading the sources, cross-compiling the kernel on a PC architecture and finally flashing it on the RPI.
 
 I'm cross-compiling the kernel on an Intel i7 CPU with 8 GB of RAM in Ubuntu as my host system, because it will compile a lot faster than compiling the kernel on the RPI itself. As embedded device I'm using a Raspberry PI v2 Model B.
@@ -127,7 +127,7 @@ sudo cp arch/arm/boot/dts/overlays/*.dtb* /media/dtuchscherer/boot/overlays/
 
 Finally, adjust the config file:
 ```shell
-kernel=kernel-rt.img
+kernel=kernel7-rt.img
 ```
 
 ## Running and Testing
@@ -148,6 +148,51 @@ git clone git://git.kernel.org/pub/scm/linux/kernel/git/clrkwllms/rt-tests.git
 cd rt-tests
 make
 ```
+
+In a terminal execute **cyclictest**:
+```shell
+cd rt-tests
+sudo ./cyclictest -p99 -t -n
+```
+Where -p defines the priority, -t starts one thread per core and -n is important for using nanosleep.
+
+**Note:** Per default the time is in microseconds.
+
+This measurement isn't useful as long there is no high processor load so we can measure if all tasks were executed in real time. Open another terminal and start **hackbench**:
+
+```shell
+cd rt-tests
+sudo ./hackbench -l5000
+```
+
+The output should look something like this after executing **hackbench**:
+```
+# /dev/cpu_dma_latency set to 0us
+policy: fifo: loadavg: 0.63 1.40 3.63 1/114 2936          
+
+T: 0 ( 2933) P:99 I:1000 C:   6287 Min:     18 Act:   25 Avg:   30 Max:      71
+T: 1 ( 2934) P:99 I:1500 C:   4191 Min:     18 Act:   44 Avg:   29 Max:      78
+T: 2 ( 2935) P:99 I:2000 C:   3143 Min:     19 Act:   25 Avg:   30 Max:      70
+T: 3 ( 2936) P:99 I:2500 C:   2515 Min:     18 Act:   25 Avg:   28 Max:      69
+```
+
+# Comparison of unpatched and patched kernel
+Now it is your turn. What will be the behavior if you execute **cyclictest** and **hackbench** with the same settings on an unpatched kernel?
+
+**Remark:** There are mainly two differences.
+
+**Important:** Real-Time != fast
+
+# Troubleshooting
+
+## Raspberry 2 freezes on execution of cyclictest and hackbench
+Due to the execution of **cyclictest** for measuring and **hackbench** for simulating a high system load it can occur the RPI freezes completely. This is not a problem with the PREEMPT patch directly. The've changed something in the implementation of the USB driver since kernel version 3.18.
+
+There is a hotfix by adding the following options in front of your **/boot/cmdline.txt**:
+```
+dwc_otg.fiq_enable=0 dwc_otg.fiq_fsm_enable=0 dwc_otg.nak_holdoff=0
+```
+
 
 # References
 * [http://elinux.org/Raspberry_Pi_Kernel_Compilation](http://elinux.org/Raspberry_Pi_Kernel_Compilation)
