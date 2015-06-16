@@ -113,8 +113,7 @@ mmcblk0
 
 Install the modules of the compiled kernel. Make sure you're executing the command from your kernel folder:
 ```shell
-sudo make ARCH=arm CROSS_COMPILE=${CCPREFIX} INSTALL_MOD_PATH=media/dtuchscherer/13d368bf-6dbf-4751-8ba1-88bed06bef77/ modules_install
-sudo make ARCH=arm CROSS_COMPILE=${CCPREFIX} INSTALL_MOD_PATH=mnt/ext4 modules_install
+sudo make ARCH=arm CROSS_COMPILE=${CCPREFIX} INSTALL_MOD_PATH=/media/dtuchscherer/13d368bf-6dbf-4751-8ba1-88bed06bef77/ modules_install
 ```
 
 Back up your old kernel and copy the realtime kernel onto the SD card:
