@@ -204,6 +204,7 @@ sudo xz -dc /usr/src/kernels/patch-3.18.11-rt7.patch.xz | patch -p1
 git clone git://github.com/raspberrypi/tools.git --depth 1
 </code></pre>
 
+<p><strong>Note:</strong> I renamed the cloned <code>tools</code> folder to <code>rpi-tools</code>. So my cross-compiler is now located under <code>/opt/rpi-tools</code>.</p>
 <h2 id="configuration">Configuration</h2>
 <p>Now comes the exciting part: Configuring the kernel! But before you are able to configure the kernel and activate the realtime capabilities, make sure you installed all necessary dependencies and get the linux kernel ready to compile:</p>
 <pre><code class="shell">sudo apt-get install libncurses5-dev
@@ -261,7 +262,7 @@ sudo cp arch/arm/boot/dts/*.dtb /media/dtuchscherer/boot/
 sudo cp arch/arm/boot/dts/overlays/*.dtb* /media/dtuchscherer/boot/overlays/
 </code></pre>
 
-<p>Finally, adjust the config file:</p>
+<p>Finally, adjust the config.txt file in <code>/boot/config.txt</code> and add the following line:</p>
 <pre><code class="shell">kernel=kernel7-rt.img
 </code></pre>
 
@@ -295,7 +296,7 @@ sudo ./hackbench -l5000
 
 <p>The output should look something like this after executing <strong>hackbench</strong>:</p>
 <pre><code># /dev/cpu_dma_latency set to 0us
-policy: fifo: loadavg: 0.63 1.40 3.63 1/114 2936          
+policy: fifo: loadavg: 0.63 1.40 3.63 1/114 2936
 
 T: 0 ( 2933) P:99 I:1000 C:   6287 Min:     18 Act:   25 Avg:   30 Max:      71
 T: 1 ( 2934) P:99 I:1500 C:   4191 Min:     18 Act:   44 Avg:   29 Max:      78
@@ -310,7 +311,7 @@ T: 3 ( 2936) P:99 I:2500 C:   2515 Min:     18 Act:   25 Avg:   28 Max:      69
 <h1 id="troubleshooting">Troubleshooting</h1>
 <h2 id="raspberry-2-freezes-on-execution-of-cyclictest-and-hackbench">Raspberry 2 freezes on execution of cyclictest and hackbench</h2>
 <p>Due to the execution of <strong>cyclictest</strong> for measuring and <strong>hackbench</strong> for simulating a high system load it can occur the RPI freezes completely. This is not a problem with the PREEMPT patch directly. The've changed something in the implementation of the USB driver since kernel version 3.18.</p>
-<p>There is a hotfix by adding the following options in front of your <strong>/boot/cmdline.txt</strong>:</p>
+<p>There is a hotfix by adding the following options in front of your <code>/boot/cmdline.txt</code>:</p>
 <pre><code>dwc_otg.fiq_enable=0 dwc_otg.fiq_fsm_enable=0 dwc_otg.nak_holdoff=0
 </code></pre>
 

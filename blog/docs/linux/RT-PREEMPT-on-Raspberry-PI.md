@@ -22,6 +22,7 @@ SUBLEVEL = 11
 ```
 
 So in my case I will need the realtime patch 3.18.11:
+
 ```shell
 cd /usr/src/kernels
 sudo wget https://www.kernel.org/pub/linux/kernel/projects/rt/3.18/older/patch-3.18.11-rt7.patch.xz
@@ -50,6 +51,8 @@ There is more than one ARM cross compiler for Ubuntu Linux. We will use the prov
 cd /opt/
 git clone git://github.com/raspberrypi/tools.git --depth 1
 ```
+
+**Note:** I renamed the cloned `tools` folder to `rpi-tools`. So my cross-compiler is now located under `/opt/rpi-tools`.
 
 ## Configuration
 Now comes the exciting part: Configuring the kernel! But before you are able to configure the kernel and activate the realtime capabilities, make sure you installed all necessary dependencies and get the linux kernel ready to compile:
@@ -125,7 +128,7 @@ sudo cp arch/arm/boot/dts/*.dtb /media/dtuchscherer/boot/
 sudo cp arch/arm/boot/dts/overlays/*.dtb* /media/dtuchscherer/boot/overlays/
 ```
 
-Finally, adjust the config file:
+Finally, adjust the config.txt file in `/boot/config.txt` and add the following line:
 ```shell
 kernel=kernel7-rt.img
 ```
@@ -168,7 +171,7 @@ sudo ./hackbench -l5000
 The output should look something like this after executing **hackbench**:
 ```
 # /dev/cpu_dma_latency set to 0us
-policy: fifo: loadavg: 0.63 1.40 3.63 1/114 2936          
+policy: fifo: loadavg: 0.63 1.40 3.63 1/114 2936
 
 T: 0 ( 2933) P:99 I:1000 C:   6287 Min:     18 Act:   25 Avg:   30 Max:      71
 T: 1 ( 2934) P:99 I:1500 C:   4191 Min:     18 Act:   44 Avg:   29 Max:      78
@@ -188,7 +191,7 @@ Now it is your turn. What will be the behavior if you execute **cyclictest** and
 ## Raspberry 2 freezes on execution of cyclictest and hackbench
 Due to the execution of **cyclictest** for measuring and **hackbench** for simulating a high system load it can occur the RPI freezes completely. This is not a problem with the PREEMPT patch directly. The've changed something in the implementation of the USB driver since kernel version 3.18.
 
-There is a hotfix by adding the following options in front of your **/boot/cmdline.txt**:
+There is a hotfix by adding the following options in front of your `/boot/cmdline.txt`:
 ```
 dwc_otg.fiq_enable=0 dwc_otg.fiq_fsm_enable=0 dwc_otg.nak_holdoff=0
 ```
