@@ -4,7 +4,7 @@ pages:
 - Quadrocopter:
    - 'Getting Started PX4': 'quadrocopter/Getting-Started-with-PX4-Toolchain.md'
 - Linux:
-   - 'Realtime-Preempt Kernel on Raspberry PI': 'linux/RT-PREEMPT-on-Raspberry-PI.md'
+   - 'Realtime Linux (PREEMPT_RT) Kernel on Raspberry PI': 'linux/RT-PREEMPT-on-Raspberry-PI.md'
 theme: readthedocs
 site_author: Daniel Tuchscherer
 copyright: Daniel Tuchscherer
