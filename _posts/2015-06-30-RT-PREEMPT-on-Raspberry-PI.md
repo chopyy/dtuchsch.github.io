@@ -5,9 +5,15 @@ date:   2015-06-30 22:56:07
 categories: real-time
 ---
 
+# Motivation
+
 Embedded systems may need real-time capabilities for controlling, driving actuators, reading out sensor data *in time* with a given rate. This guideline shows how to apply the PREEMPT_RT patch on a Raspberry PI (RPI) v2. This guide includes downloading the sources, cross-compiling the kernel on a PC architecture and finally flashing it on the RPI.
 
-I'm cross-compiling the kernel on an Intel i7 CPU with 8 GB of RAM that runs Ubuntu Linux as my host system, because it will compile a lot faster than compiling the kernel on the RPI itself. As the embedded device I'm using a Raspberry PI v2 Model B.
+> This guide only covers applying the PREEMPT_RT patch. It does not show how to optimize the kernel configuration to reduce the worst case latency of the real-time kernel. For input on how to optimize your real-time kernel go to [OSADL Real-time optimization](https://www.osadl.org/Real-time-optimization.qa-farm-latency-optimization.0.html).
+
+# Configuration
+
+I'm cross-compiling the kernel on an Intel i7 CPU with 8 GB RAM that runs Ubuntu Linux as my host system, because it will compile a lot faster than compiling the kernel on the RPI itself. As the embedded device I'm using a Raspberry PI v2 Model B.
 
 ## Downloading and Patching
 There are several possible kernels you can use to build a kernel with PREEMPT_RT. The easiest way to get a real-time kernel running on the RPI is to use the raspberry kernel from their GitHub repository. In this guide I will briefly describe the way for patching and building the real-time kernel with the kernel source from the GitHub repository of Raspberry. I will try to release a guide for patching and running a Vanilla kernel with PREEMPT_RT patch on the RPI soon.
@@ -21,7 +27,7 @@ cd kernels
 git clone --depth=1 https://github.com/raspberrypi/linux
 ```
 
-Look out for the version of the kernel. You will find the information within the Makefile and it should show something like below:
+Look out for the version of the kernel. You will find the information in the Makefile and it should show something like below:
 
 ```
 VERSION = 3
@@ -85,27 +91,31 @@ Make an initial config for the Raspberry build:
 sudo make ARCH=arm CROSS_COMPILE=${CCPREFIX} bcm2709_defconfig
 ```
 
-In the same terminal where you exported the environment variable run your first make command to configure your realtime kernel:
+In the same terminal where you exported the environment variable run your first make command to start the kernel configuration menu:
 
 ```bash
 KERNEL=kernel7
 sudo make ARCH=arm CROSS_COMPILE=${CCPREFIX} menuconfig
 ```
 
-This make target will start up a graphical interface shown below: 
+This target will start up a graphical interface to configure the kernel.
 
-![](gfx/Menuconfig_Start.png)
+If you configured the ARM build the Preemption Model of the PREEMPT patch can be found under *Kernel Features* -> **Preemption Model** as shown in the following snippet:
 
-If you configured the ARM build correctly the Preemption Model of the PREEMPT patch can be found under *Kernel Features* and then **Preemption Model** like shown in the following image:
-
-![](gfx/Preemption_Model_menuconfig_ARM.png)
+```bash
+[ ] Symmetric Multi-Processing
+[ ] Architected timer support
+    Memory split (3G/1G user/kernel split) --->
+[ ] Support for the ARM Power State Coordination Interface (PCSI)
+    Preemption Model (Fully Preemptible Kernel (RT)) --->
+```
 
 Choose **Fully Preemptible Kernel (RT)** here.
 
 **Note:** If this option is not available the patch was not successful and something went wrong. Try to start from the beginning and patch the kernel again.
 
 ## Compiling
-You can now compile the kernel on the PC. If you are working on a multi-processor platform enable parallel jobs for a faster build by typing `-j #n` where #n is the number of parallel jobs that will be used. This should be 1.5 times your number of cores. Using this option makes the build about 50% faster on a modern Intel/AMD processor. Now you can imagine how long it would take to compile the kernel directly on the RPI itself (more than 3 hours I guess).
+You can now compile the kernel on the PC. If you are working on a multi-processor platform enable parallel jobs for a faster build by typing `-j <n>` where <n> is the number of parallel jobs that shall be used. This should be 1.5 times your number of cores. Using this option makes the build about 50% faster on a modern Intel/AMD processor. Now you can imagine how long it would take to compile the kernel directly on the RPI itself (more than 3 hours I guess).
 
 For the raspberry kernel simply execute the following commands:
 
@@ -117,9 +127,9 @@ sudo make ARCH=arm CROSS_COMPILE=${CCPREFIX} zImage modules dtbs -j5
 After successful compilation the compiled kernel is located under *arch/arm/boot/*.
 
 ## Flash the compiled kernel
-After compiling the kernel we can flash the image onto the RPI. First, plug in your SD card from RPI and type `lsblk` to list all drives:
+We can now flash the image onto the RPI. First, plug in your SD card from RPI and type `lsblk` to list all drives:
 
-This shows something like below:
+This should show something like below:
 
 ```bash
 NAME
@@ -178,19 +188,19 @@ Where -p defines the priority, -t parametrizes the number of threads and -n is i
 
 **Note:** Per default the latencies are in microseconds.
 
-This measurement isn't useful as long as there is no high load, to get the worst case latency under . Open another terminal and start **hackbench**:
+Yet, this measurement isn't meaningful as long as there is no high system load, to get the worst case latency. Open another terminal and start **hackbench**:
 
 ```bash
 cd rt-tests
-sudo ./hackbench -l500000
+sudo ./hackbench -l5000000
 ```
 
 # Troubleshooting
 
 ## Raspberry 2 freezes on execution of cyclictest and hackbench
-Due to the execution of **cyclictest** for measuring latencies and **hackbench** for a high system load, it can occur the RPI freezes completely. This is not a problem with the PREEMPT_RT patch. The've changed something in the implementation of the USB driver since kernel version 3.18.
+Due to the execution of **cyclictest** for measuring the kernel's worst case latency and **hackbench** to produce a high system load, it may occur that the RPI freezes. This kind of  behavior is reproducible by using kernel version 3.18.11. This is due to a change of an FIQ handler. I didn't had the time to find out more about this false behavior. Maybe I will add an explanation why the RPI freezes.
 
-There is a hotfix by adding the following options in front of your `/boot/cmdline.txt`:
+Until then, I found a hotfix by adding the following options in front of your `/boot/cmdline.txt`:
 
 ```
 dwc_otg.fiq_enable=0 dwc_otg.fiq_fsm_enable=0 dwc_otg.nak_holdoff=0
