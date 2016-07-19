@@ -6,12 +6,8 @@ permalink: /about/
 
 # Work
 
-Hi, this is Daniel, R&D engineer at Heilbronn University located in the south of Germany. I'm dealing with robotics and autonomos driver assistance. I'm passionate about programming especially in C and C++, control theory, automotive, embedded and real-time systems.
-
-Plus, there's an exception... I like writing documentations and reports. 
+Hi, this is Daniel, R&D engineer at Heilbronn University, Germany. I'm working in the fields of human-robot collaboration and autonomous driving. I'm passionate about programming in C and C++, control theory, digital signal processing, embedded and real-time systems.
 
 # Studies
 
-Currently I'm owning a BSc degree in electric motor systems and mechatronics. My thesis was based on a research work on the use of C++ in safety critical systems.
-
-There are currently some publications pending. I will give an update on this soon.
+I'm a graduate student having a BSc degree in electric motor systems and mechatronics.
