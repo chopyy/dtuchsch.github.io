@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "PREEMPT_RT patch for Ubuntu Linux"
-date:   2015-06-30 22:56:07
+date:   2016-08-01 14:35:07
 categories: real-time
 ---
 
