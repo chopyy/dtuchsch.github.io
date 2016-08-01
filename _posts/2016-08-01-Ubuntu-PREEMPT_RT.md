@@ -8,7 +8,7 @@ categories: real-time
 > In this guide i will show you how to patch the Linux kernel. As an example I'm going to use kernel version 3.18.29.
 
 # Configuration
-Change to your home directory, open up a terminal and declare some variables we use during kernel configuration.
+Open up a terminal, go to your home directory and declare some variables we use during kernel configuration.
 
 ```shell
 KERNEL=linux-3.18.29
@@ -17,8 +17,8 @@ KERNEL_SRC=https://www.kernel.org/pub/linux/kernel/v3.x/${KERNEL}.tar.xz
 RT_PATCH_SRC=https://www.kernel.org/pub/linux/kernel/projects/rt/3.18/${RT}.patch.xz
 ```
 
-The `_SRC` variables are the paths to download the kernel and the PREEMPT_RT patch. In the next step download the kernel,
-extract the files and rename the directory to `-rt`.
+The `_SRC` variables are the paths to download the kernel and the PREEMPT_RT patch. 
+In the next step download the kernel, extract the files and rename the directory to `-rt`.
 
 ```shell
 wget ${KERNEL_SRC}
