@@ -5,10 +5,10 @@ date:   2015-12-13 22:46:00
 categories: Linux, CAN
 ---
 
-> Take a look at [kernel documentation](https://www.kernel.org/doc/Documentation/networking/can.txt) for a brief introduction to SocketCAN. In the following guide I will show a short introduction on how to configure, set up and use a CAN device under Linux.
+> Take a look at [kernel documentation](https://www.kernel.org/doc/Documentation/networking/can.txt) for a brief introduction to SocketCAN. In the following guide I will give a short introduction on how to configure, set up and use a CAN device under Ubuntu Linux using SocketCAN.
 
 # Check for CAN interfaces
-List all the available interfaces: `ifconfig -a`. This command will list all CAN devices available - even if some of them are not active yet. If you've plugged in your CAN USB or CAN PCI card of choice you should see something similar to this:
+Open up a terminal. List all the available interfaces: `ifconfig -a`. This command will list all CAN devices available - even if some of them are not active yet. If you've plugged in your CAN USB or CAN PCI card of choice you should see something similar to this:
 
 ```
 can0      Link encap:UNSPEC  HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  
