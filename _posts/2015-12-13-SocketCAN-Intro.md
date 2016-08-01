@@ -65,9 +65,9 @@ Insert the following snippet:
 ```
 allow-hotplug can0
 iface can0 can static
-    bitrate 1250000
+    bitrate 125000
     ifconfig $IFACE down
-    ip link set $IFACE type can bitrate 1250000
+    ip link set $IFACE type can bitrate 125000
     ifconfig $IFACE up
 ```
 
