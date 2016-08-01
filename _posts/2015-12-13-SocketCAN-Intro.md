@@ -5,23 +5,35 @@ date:   2015-12-13 22:46:00
 categories: Linux, CAN
 ---
 
-> The best way to get started with SocketCAN under Linux is the [kernel documentation](https://www.kernel.org/doc/Documentation/networking/can.txt). In the following guide I will show you on how to configure and set up a CAN device under Linux. I will also give a short introduction on how to send and receive CAN frames via SocketCAN programmatically.
+> A first brief introduction to SocketCAN gives the [kernel documentation](https://www.kernel.org/doc/Documentation/networking/can.txt). In the following guide I will show a short introduction on how to configure, set up and use a CAN device under Linux.
 
 # Available CAN interfaces
-You can list all your network interfaces by typing `ifconfig -a`. This should list all the interfaces available. If there's no CAN device listed, you should fix your kernel or plug in your CAN USB interface.
+List all the available interfaces: `ifconfig -a`. This command will list all available interfaces - even if some of them are not active. If you've plugged in your CAN USB or CAN PCI card of choice you should see something similar to this:
+
+```
+can0      Link encap:UNSPEC  HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  
+          UP RUNNING NOARP  MTU:16  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:10 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+          Interrupt:16 
+```
+
+If there are no CAN devices listed, make sure the CAN driver of your hardware device is installed properly.
 
 # Configure the bitrate
-First you will need to configure the bitrate the CAN device will send and receive messages via CAN. Open up a terminal and type `ip link set up can<X> type can bitrate <bitrate>`, where `<X>` stands for its interface number (e.g. can0, can1, can42) and `<bitrate>` specifies the desired bitrate. The following snippet shows an example of configuring the CAN interface can0 and set its bitrate to 125 kBit/s.
+First, you set the bitrate the CAN device sends and receives data. Open up a terminal and type `ip link set up can<X> type can bitrate <bitrate>`, where `<X>` stands for the interface number (e.g. can0, can1, ...) and `<bitrate>` specifies the desired bitrate. The following snippet shows an example of configuring the CAN interface can0 and set its bitrate to 125 kBit/s.
 
 ```bash
 ip link set up can0 type can bitrate 125000
 ```
 
-# Bring up the CAN interface
-After configuring the bitrate, we are now able to bring up the CAN interface by typing `ifconfig can<X> up` into a terminal. If you want to disable a CAN interface just type `ifconfig can<X> down`.
+# Activate & deactivate the CAN interface
+After setting the bitrate, you're now able to bring up the CAN interface: `ifconfig can<X> up`. To deactivate the interface again type: `ifconfig can<X> down`.
 
-# Send and receive CAN frames
-You may easily test your CAN interface by using *can-utils* that is available at [GitHub](https://github.com/linux-can/can-utils). It's a collection of user-space applications to send and receive via SocketCAN. You can clone this repository on your local machine by typing `clone https://github.com/linux-can/can-utils`.
+# Send and receive CAN messages via SocketCAN
+By using *can-utils* available at [GitHub](https://github.com/linux-can/can-utils) you can test your CAN device. *can-utils* is a collection of user-space applications to send, receive and monitor data via SocketCAN. You can clone this repository on your local machine: `clone https://github.com/linux-can/can-utils`.
 
 > In many cases can-utils is already part of the kernel and the user-space applications are located under /usr/bin.
 
@@ -37,9 +49,29 @@ It's also possible to receive messages by typing `candump <device>` as shown in 
 candump can0
 ```
 
-This does a blocking read on the socket (synchronized) and prompts the message in the terminal as soon as a CAN frame is received.
+This does a blocking read on the socket (synchronized) and prompts the message in the terminal as soon as a CAN message is received.
 
-*Note: The can-utils repository has some additional packages to offer you can play with and the source code is a first example to programmatically send and receive via SocketCAN.*
+*Note: The can-utils repository has some additional packages to offer you can experiment with. Check out the source code how to programmatically send and receive data via SocketCAN.
+
+# Configure the CAN device at start up
+If you want to set the bitrate and bring up a CAN interface at start up time of Linux automatically, you have to edit `/etc/network/interfaces`:
+
+Open the file in an editor:
+```shell
+sudo gedit /etc/network/interfaces
+```
+
+Insert the following snippet:
+```
+allow-hotplug can0
+iface can0 can static
+    bitrate 1250000
+    ifconfig $IFACE down
+    ip link set $IFACE type can bitrate 1250000
+    ifconfig $IFACE up
+```
+
+This will initialize a particular CAN device automatically with a given bitrate (e.g. "can0").
 
 # Programming example
 It's also possible to access the CAN device programmatically to send and receive CAN frames via SocketCAN. For this purpose I created a class named Can. The constructor opens a socket and binds the socket to the CAN interface given as the constructor's parameter.
