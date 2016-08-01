@@ -13,7 +13,9 @@ github_username:  dtuchsch
 avatar: https://avatars3.githubusercontent.com/u/3890882?v=3&s=460
 
 # Build settings
-markdown: redcarpet
-highlighter: pygments
-redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript"]
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
