@@ -5,7 +5,7 @@ date:   2016-08-01 14:35:07
 categories: real-time
 ---
 
-> In this guide i will show you how to patch the Linux kernel. As an example I'm going to use kernel version 3.18.29.
+> In this guide I will show you how to configure and install the PREEMPT_RT patch in Ubuntu Linux. As an example I'm going to use kernel version 3.18.29.
 
 # Configuration
 Open up a terminal, go to your home directory and declare some variables we use during kernel configuration.
