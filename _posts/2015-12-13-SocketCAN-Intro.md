@@ -57,11 +57,13 @@ This does a blocking read on the socket (synchronized) and prompts the message i
 If you want to set the bitrate and bring up a CAN interface at start up time of Linux automatically, you have to edit `/etc/network/interfaces`:
 
 Open the file in an editor:
-```shell
+
+```bash
 sudo gedit /etc/network/interfaces
 ```
 
 Insert the following snippet:
+
 ```
 allow-hotplug can0
 iface can0 can static
