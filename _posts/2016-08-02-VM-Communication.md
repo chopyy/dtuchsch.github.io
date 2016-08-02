@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Kommunikation zwischen einem Host- und Gast-OS mit VirtualBox"
+title:  "TCP/IP Kommunikation zwischen einem Host- und Gast-OS mit VirtualBox"
 date:   2016-08-02 21:10:00
 categories: linux, vm, virtualbox, ros, ethernet
 ---
@@ -26,6 +26,7 @@ In VirtualBox in das Menü **Datei -> Einstellungen -> Netzwerk** navigieren und
 In diesem Fenster ein neues Host-only Netzwerk hinzufügen und folgende Einstellungen vornehmen:
 
 Im Tab **Adapter**:
+
 * **IPv4-Adresse:** 192.168.100.1
 * **IPv4-Netzmaske:** 255.255.255.0
 
@@ -36,8 +37,6 @@ Für die Einrichtung der statischen IP unter Ubuntu **Netzwerkverbindungen -> Ve
 
 # Änderung des Netzwerk-Adapters
 Im Anschluss muss die Netzwerkkonfiguration der virtuellen Maschine in VirtualBox angepasst werden:
-
-
 
 * **Maschine -> Ändern...** und zum Reiter **Netzwerk** navigieren
 * **Anschlossen an:** Host-only Adapter
