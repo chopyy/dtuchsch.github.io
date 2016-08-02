@@ -23,6 +23,8 @@ Um eine Verbindung zwischen Host und Gast herzustellen, muss eine Host-only Komm
 
 In VirtualBox in das Menü **Datei -> Einstellungen -> Netzwerk** navigieren und den Reiter **Host-only Netzwerke** auswählen.
 
+![Host-only Netzwerk hinzufügen]({{ site.url }}/assets/Netzwerk.PNG)
+
 In diesem Fenster ein neues Host-only Netzwerk hinzufügen und folgende Einstellungen vornehmen:
 
 Im Tab **Adapter**:
@@ -30,24 +32,32 @@ Im Tab **Adapter**:
 * **IPv4-Adresse:** 192.168.100.1
 * **IPv4-Netzmaske:** 255.255.255.0
 
+![Adaptereinstellungen für das Host-only Netzwerk]({{ site.url }}/assets/Adapter.PNG)
+
 Im Tab **DHCP Server** den Haken bei **Server aktivieren** entfernen. 
 
-Die Vergabe der IP Adresse erfolgt statisch und nicht dynamisch. 
-Für die Einrichtung der statischen IP unter Ubuntu **Netzwerkverbindungen -> Verbindungen bearbeiten...** auswählen.
+![DHCP deaktivieren]({{ site.url }}/assets/Adapter.PNG)
 
 # Änderung des Netzwerk-Adapters
+
 Im Anschluss muss die Netzwerkkonfiguration der virtuellen Maschine in VirtualBox angepasst werden:
 
 * **Maschine -> Ändern...** und zum Reiter **Netzwerk** navigieren
 * **Anschlossen an:** Host-only Adapter
 
-# Einrichtung einer statischen IP unter Ubuntu
+![Netzwerkeinstellungen zu Host-only ändern]({{ site.url }}/assets/Netzwerkeinstellungen.PNG)
 
-Anschließend auf **Bearbeiten** und folgende Einstellungen im Tab **IPv4-Einstellungen** vornehmen:
+# Einrichtung einer statischen IP unter Ubuntu
+Die Vergabe der IP Adresse erfolgt statisch und nicht dynamisch. 
+Für die Einrichtung der statischen IP unter Ubuntu **Netzwerkverbindungen -> Verbindungen bearbeiten...** auswählen.
+
+Im Anschluss auf **Bearbeiten** und folgende Einstellungen im Tab **IPv4-Einstellungen** vornehmen:
 
 * **Methode:** Manuell
 * **Adresse:** 192.168.100.2
 * **Netzmaske:** 255.255.255.0
+
+![Ubuntu statische IP anlegen]({{ site.url }}/assets/Ubuntu_IP.PNG)
 
 # Test der Verbindung
 
