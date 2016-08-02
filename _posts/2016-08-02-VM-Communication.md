@@ -61,7 +61,7 @@ Im Anschluss auf **Bearbeiten** und folgende Einstellungen im Tab **IPv4-Einstel
 
 # Test der Verbindung
 
-Ein Ping unter vom Host an den Gast ist dann erfolgreich:
+Ein Ping vom Host aus an den Gast ist dann erfolgreich:
 
 ```
 Ping wird ausgeführt für 192.168.100.2 mit 32 Bytes Daten:
@@ -77,4 +77,4 @@ Ca. Zeitangaben in Millisek.:
     Minimum = 0ms, Maximum = 0ms, Mittelwert = 0ms
 ```
 
-Ein Ping vom Gast zum Host sollte ebenfalls erfolgreich sein.
+Ein Ping vom Gast zum Host sollte ebenfalls erfolgreich sein. Jetzt können Anwendungen wie z.B. ROS-Knoten Daten über TCP/IP an den Host versenden.
