@@ -20,9 +20,9 @@ Ping-Statistik für 10.0.2.15:
 
 Eine Kommunikation zwischen Host und Gast kann durch folgende Konfiguration hergestellt werden:
 
-* NAT: Hier besitzt der Gast dieselbe IP wie der Host und die Dienste des Gasts sind über localhost zugänglich. Ein auf dem Gastsystem installierter Apacheserver ist unter 127.0.0.1:80 im Browser erreichbar. Damit sich Host und Gast sehen, müssen Ports weitergeleitet werden.
-* Host-only: Dabei wird ein virtuelles Ethernet-Interface auf dem Hostrechner von VirtualBox eingerichtet.
-* Bridge: Hierbei wird die Netzverbindung des Gasts direkt auf eine physikalisch vorhandene Ethernetschnittstelle überbrückt. Dem Gast wird dann vom anliegenden Netzwerk eine IP zugewiesen. Diese Variante kommt für mich persönlich nicht in Frage, weil ich zum Teil im Firmennetzwerk unterwegs bin. Somit kann bei Überbrückung dem Gast keine IP zugewiesen werden.
+* **NAT:** Der Gast besitzt dieselbe IP wie der Host und die Dienste des Gasts sind über localhost zugänglich. Ein auf dem Gastsystem installierter Apacheserver ist unter 127.0.0.1:80 im Browser erreichbar. Damit sich Host und Gast sehen, müssen Ports weitergeleitet werden.
+* **Host-only:** Dabei wird ein zusätzliches virtuelles Ethernet-Interface auf dem Hostrechner von VirtualBox eingerichtet.
+* **Bridge:** Hierbei wird die Netzverbindung des Gasts direkt auf eine physikalisch vorhandene Ethernetschnittstelle überbrückt. Dem Gast wird dann vom anliegenden Netzwerk eine IP zugewiesen. Diese Variante kommt für mich persönlich nicht in Frage, weil ich zum Teil im Firmennetzwerk unterwegs bin. Somit kann bei Überbrückung dem Gast keine IP zugewiesen werden.
 
 # Variante 1: NAT und Port-Forwarding
 
