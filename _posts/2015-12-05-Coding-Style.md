@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Source Code Comment Styleguide for C and C++"
+title:  "File formatting for C and C++"
 date:   2015-12-05 19:37:00
 categories: cpp
 ---
@@ -9,26 +9,30 @@ categories: cpp
 
 I'm very pedantic when it comes to source code style. In my opinion source code files shall have a clean, consistent layout and they shall be easy to read. Therefore, in the past I was looking for a source code comment template that suits my needs. Every single time I thought I had found my coding styleguide, over time I found out the styleguide wasn't complete or I wasn't that consistent. This is life. Every human changes its preferences. And so does my own coding style change over time - I hope I'm not the only one with this...
 
-Even if it is very painful - I had to stay strong and commit myself to one well defined source code comment styleguide. The code style is a mix of the following references and my own preferences. Feel free to use and modify it for your own projects.
+Even if it is painful - I had to stay strong and commit myself to one well defined source code comment styleguide. The code style is a mix of the following references and my own preferences. Feel free to use and modify it for your own projects.
 
 # Source Files
-One translation unit has a defined comment set to separate different code elements like includes, defines, types, static variables and functions. This makes the source file more readable.
+One translation unit has a defined comment set to group different code elements such as includes, defines, types, static variables and functions. This gives all source files a well defined structure.
+
+## Preferred editor settings
+
+I prefer the  following settings for all of my source code files:
+
+* Tab width: 4 (four spaces)
+* Insert spaces for tabs
+* Max. line length: 80
 
 ## Filecomment
-The file comments are in the head of each source file. It contains information about the file name, its author.
+The file comments are at top of each source file. It contains some meta information about the file. For example, the filename, the author's name and a short description how you can use it and why it exists.
 
 ```c++
 /**
- * @file      rt_can.cpp
+ * @file      my_app.cpp
  * @author 	  dtuchscherer <daniel.tuchscherer@hs-heilbronn.de>
- * @brief     Example of send and receive via SocketCAN
- * @details   This demo shows the communication via Linux SocketCAN.
- *            It contains two POSIX threads talking to each other via SocketCAN.
- *            A transmission thread sends CAN frames containing a timestamp
- *            with the time point of transmission via a CAN interface.
- *            The other thread receives those CAN frames with a loop with a
- *            blocking read on another CAN interface.
- * 			      Usage: $ ./rt_can <can_dev> <can_dev> [cycles]
+ * @brief     Brief introduction what this file does.
+ * @details   Detailed description how you may use and why this file exists.
+ * 			      Usage: $ ./my_app <arg1>
+ * @edit      20.09.2016
  * @version   1.2
  */
 ```
@@ -36,7 +40,7 @@ The file comments are in the head of each source file. It contains information a
 In addition you could place a copyright notice here by `@copyright Copyright (c) 2015, Daniel Tuchscherer.` and add a license, too.
 
 ## File structure
-On the file comment there follows the structure to group the code elements: 
+On the file comment there follows the structure to group the code elements:
 
 ```c++
 /*******************************************************************************
@@ -53,7 +57,7 @@ constexpr int RT_PRIORITY = 97;
 /*******************************************************************************
  * TYPEDEFS, ENUMERATIONS, CLASSES
  *******************************************************************************/
-class Block
+class MyClass
 {
 
 };
@@ -78,14 +82,24 @@ static uint8 Module_var = 0U;
 /*******************************************************************************
  * FUNCTION DEFINITIONS
  *******************************************************************************/
-int main(int argc, char** argv)
+
+/////////////////////////////////////////////////////////////////////////////////
+void hey_foo() noexcept
 {
 
 }
+ 
+/////////////////////////////////////////////////////////////////////////////////
+int main(int argc, char** argv)
+{
+    return EXIT_SUCCESS;
+}
 ```
 
+All function bodies are separated by C++ single line comments `//` for better readability.
+
 # Header Files
-Basically, the header files are the same compared to source files. Because there is no execution code a header file doesn't contain the section `FUNCTION DEFINITIONS`.
+Basically, the header files are the same compared to source files. Because there is no execution code (except templates) a header file doesn't contain the section `FUNCTION DEFINITIONS`.
 
 # Download
-You can download my current code template for Eclipse that is based on this article [here]({{ site.url }}/assets/codetemplates.xml).
+You can download my current code template for Eclipse based on this article [here]({{ site.url }}/assets/codetemplates.xml).
