@@ -28,10 +28,10 @@ The file comments are at top of each source file. It contains some meta informat
 ```c++
 /**
  * @file      my_app.cpp
- * @author 	  dtuchscherer <daniel.tuchscherer@hs-heilbronn.de>
+ * @author    dtuchscherer <daniel.tuchscherer@hs-heilbronn.de>
  * @brief     Brief introduction what this file does.
  * @details   Detailed description how you may use and why this file exists.
- * 			      Usage: $ ./my_app <arg1>
+ *            Usage: $ ./my_app <arg1>
  * @edit      20.09.2016
  * @version   1.2
  */
