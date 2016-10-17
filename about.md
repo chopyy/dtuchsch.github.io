@@ -19,4 +19,4 @@ I have a BSc degree in electric motor systems and mechatronics.
 
 # What is this website about ?
 
-The blog entries on the front page of this site is some kind of reminder. The purpose is to keep some of the things in mind and to have a walkthrough at a later time. E.g. I do not configure and compile custom real-time Linux kernels at a daily basis, because I mainly do software development in C / C++ and automotive systems engineering. Maybe some of the blog entries are also useful to some other people.
+The blog entries on the front page of this site are some kind of reminder. The purpose is to keep some of the things in mind and to have a walkthrough at a later time. E.g. I do not configure and compile custom real-time Linux kernels at a daily basis, because I mainly do software development in C / C++ and automotive systems engineering. Maybe some of the blog entries are also useful to some other people.
