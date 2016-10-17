@@ -1,9 +1,9 @@
 # Site settings
-title: daniels memo
+title: daniels thoughts
 email: daniel.tuchscherer@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Hi! I'm Daniel, R&D engineer at Heilbronn University, Germany.
-  I'm passionate about C and C++, automotive systems, real-time and control theory.
+  I'm passionate about C and C++, automotive systems, real-time, embedded systems and control engineering.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://dtuchsch.github.io" # the base hostname & protocol for your site
 
