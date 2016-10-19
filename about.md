@@ -20,3 +20,16 @@ I have a BSc degree in electric motor systems and mechatronics.
 # What is this website about ?
 
 The purpose of this blog is to keep things in my mind and to have a guide at a later time point. Maybe some of the things could be helpful for other people, too.
+
+# Special interests
+
+* real-time C++
+* efficient, elegant programming
+* static code analysis
+* continuous improvement of software development process
+
+# Things i like
+
+* clean, maintainable & readable code
+* nice code style
+* simplification
