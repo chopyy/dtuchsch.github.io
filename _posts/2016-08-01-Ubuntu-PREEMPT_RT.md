@@ -2,7 +2,7 @@
 layout: post
 title:  "PREEMPT_RT patch for Ubuntu Linux"
 date:   2016-08-01 14:35:07
-categories: real-time
+categories: real-time, ubuntu, linux, preempt_rt
 ---
 
 > In this guide I will show you how to configure and install the PREEMPT_RT patch in Ubuntu Linux. As an example I'm going to use kernel version 3.18.29.
@@ -72,3 +72,7 @@ Install the Debian packages:
 ```shell
 sudo dpkg -i linux-image* linux-headers*
 ```
+
+# Notes 
+
+I've also created a GitHub repository with some shell scripts for easy configuration and installation of Ubuntu Linux and PREEMPT_RT patch, which can be found here: [ubuntu_preempt_rt](https://github.com/dtuchsch/ubuntu_preempt_rt)
