@@ -24,12 +24,14 @@ The purpose of this blog is to keep things in my mind and to have a guide at a l
 # Special interests
 
 * real-time C++
+* embedded systems
 * efficient, elegant programming
 * static code analysis
 * continuous improvement of software development process
 
 # Things i like
 
-* clean, maintainable & readable code
+* design-patterns
+* clean, maintainable, reusable & readable code
 * nice code style
 * simplification
