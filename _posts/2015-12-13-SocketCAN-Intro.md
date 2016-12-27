@@ -40,10 +40,11 @@ This will add a virtual CAN device vcan0 to your system. To send and receive dat
 $ sudo ifconfig vcan0 up
 ```
 
-Typing `$ ifconfig ` in a terminal should give you a lsit of all network interfaces with your added vcan0 device. 
+Typing `$ ifconfig ` in a terminal should give you a list of all network interfaces with your added vcan0 device. 
 
 ## Using CAN FD 
 
+For standard CAN frames the MTU is set to 16.
 To use CAN FD, adjust the maximum transmission unit. For CAN FD the MTU must be set to 72:
 
 ```
