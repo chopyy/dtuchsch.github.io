@@ -18,9 +18,9 @@ can0      Link encap:UNSPEC  HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00
           UP RUNNING NOARP  MTU:16  Metric:1
           RX packets:0 errors:0 dropped:0 overruns:0 frame:0
           TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:10 
+          collisions:0 txqueuelen:10
           RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
-          Interrupt:16 
+          Interrupt:16
 ```
 
 If there are no CAN devices listed, make sure the CAN driver for your CAN hardware device is installed properly. If there is no real CAN hardware available, SocketCAN also provides a virtual interface. For more information about vcan take a look below.
@@ -40,9 +40,9 @@ This will add a virtual CAN device vcan0 to your system. To send and receive dat
 $ sudo ifconfig vcan0 up
 ```
 
-Typing `$ ifconfig ` in a terminal should give you a list of all network interfaces with your added vcan0 device. 
+Typing `$ ifconfig ` in a terminal should give you a list of all network interfaces with your added vcan0 device.
 
-## Using CAN FD 
+## Using CAN FD
 
 For standard CAN frames the MTU is set to 16.
 To use CAN FD, adjust the maximum transmission unit. For CAN FD the MTU must be set to 72:
@@ -86,7 +86,8 @@ This does a blocking read on the socket (synchronized) and prompts the message i
 
 *Note: The can-utils repository has some additional packages to offer you can experiment with. Check out the C source code in this [can-utils GitHub repository](https://github.com/linux-can/can-utils) how to programmatically send and receive data over SocketCAN.
 
-# Configure the CAN device at start up
+# Register one CAN device on startup of Linux
+
 If you want to set the bitrate and bring up a CAN interface at start up time of Linux automatically, you have to edit `/etc/network/interfaces`:
 
 Open up the file `/etc/network/interfaces` in an editor of your choice and insert the following into `/etc/network/interfaces` at the end:
@@ -102,7 +103,25 @@ iface can0 can static
 
 These settings will initialize a CAN device automatically with a given bitrate (e.g. "can0") at boot-up time. Please note: Adjust the bitrate to your needs. As an example the bitrate is set to 125 kBit/s.
 
-# Overview
+# Setup Virtual CAN device on startup of Linux
+
+Open up `/etc/modules` in an editor, add `vcan`. This will load the module at boot time.
+
+As mentioned for a real CAN device, edit `/etc/network/interfaces` and paste in the following:
+
+```
+auto vcan0
+   iface vcan0 inet manual
+   pre-up /sbin/ip link add dev $IFACE type vcan
+   pre-up /sbin/ip link set vcan0 mtu 72
+   up /sbin/ifconfig $IFACE up
+```
+
+To apply these changes and use vcan0 you may either restart the network settings by typing `$ sudo /etc/init.d/networking restart` or reboot Linux.
+
+Interface vcan0 should pop up if you type `$ ifconfig` in a terminal.
+
+# Recap
 
 * Add a virtual CAN device: `$ sudo ip link add dev vcan<X> type vcan`
 * Adjust the bitrate settings: `$ sudo ip link set can<X> bitrate <XXXX>`
