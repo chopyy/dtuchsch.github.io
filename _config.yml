@@ -1,9 +1,8 @@
 # Site settings
-title: daniels thoughts
+title: daniels notebook
 email: daniel.tuchscherer@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Hi! I'm Daniel, R&D engineer at Heilbronn University, Germany.
-  I'm passionate about C++, automotive systems, real-time systems, embedded systems and control engineering.
+  Hi! I'm Daniel. I'm working as a R&D engineer at Heilbronn University in Germany. I'm passionate about C++, innovative systems, real-time systems, embedded systems and control engineering.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://dtuchsch.github.io" # the base hostname & protocol for your site
 
@@ -15,6 +14,7 @@ avatar: https://avatars3.githubusercontent.com/u/3890882?v=3&s=460
 # Build settings
 markdown: kramdown
 highlighter: rouge
+mathjax: true
 kramdown:
   input: GFM
   auto_ids: true

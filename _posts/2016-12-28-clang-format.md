@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "clang-format for automatic code-formatting and a consistent code-style"
-date:   2016-08-02 23:00:00
-categories: C++, code-style, clang-format
+date:   2016-12-28 23:00:00
+categories: C++, code-style, clang-format, verification
 ---
 
 > `clang-format` is a formatting tool, which automatically formats your cpp files and header files based on a specified code-style. It is part of the clang compiler toolchain.

@@ -4,13 +4,15 @@ title: About
 permalink: /about/
 ---
 
-# Work
+# "How would you describe yourself and your work?"
 
-Hi, this is Daniel, R&D engineer at Heilbronn University, Germany. I'm working in the fields of human-robot collaboration and highly automated driving. I'm passionate about programming - especially in C++ and C, control theory, digital signal processing, embedded and real-time systems. I'm enthusiastic about how to improve embedded software development in the future.
+Hi, this is Daniel, R&D engineer at Heilbronn University, Germany. I'm working in the innovative areas of human-robot collaboration and highly automated driving. I'm passionate about programming - programming in C++ and C in particular, control engineering, digital signal processing, embedded and real-time systems.
+
+I'm enthusiastic about how to improve the embedded software development. I really like being open-minded, innovative and creative during design and implementation phase. What's of real importance for me is to think out-of-the-box or as *Elon Musk* would say: "Don't just follow the trend". At the same time of being innovative, it's mandatory to rely on proven-in-use concepts, standards and tools to get things done.
 
 # Education
 
-I have a BSc degree in electric motor systems and mechatronics.
+I have a BSc degree in drive systems (electrical machines) and mechatronics. In parallel to my work as a research assistant I'm completing my Master's degree in mechatronics.
 
 # Publications
 
@@ -19,7 +21,7 @@ I have a BSc degree in electric motor systems and mechatronics.
 
 # What is this website about ?
 
-The purpose of this blog is to keep things in my mind and to have a guide at a later time point. Maybe some of the things could be helpful for other people, too.
+Main objective of this archive is to keep things in my mind and to have a guideline at a later time point. Some posts may be also helpful to other people. Most of the posts are in English. Off-topic related stuff is mostly in German.
 
 # Special interests
 
@@ -33,5 +35,10 @@ The purpose of this blog is to keep things in my mind and to have a guide at a l
 
 * design-patterns
 * clean, maintainable, reusable & readable code
-* nice code style
+* object-oriented and generic design
+* sleek code style
 * simplification
+
+# Things i don't like
+
+* Every engineer I know is confronted with over-engineering.
