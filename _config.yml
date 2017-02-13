@@ -19,4 +19,4 @@ kramdown:
   input: GFM
   auto_ids: true
   syntax_highlighter: rouge
-theme: cayman
+theme: jekyll-theme-cayman
