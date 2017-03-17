@@ -38,7 +38,3 @@ Main objective of this archive is to keep things in my mind and to have a guidel
 * object-oriented and generic design
 * sleek code style
 * simplification
-
-# Things i don't like
-
-* Every engineer I know is confronted with over-engineering.
