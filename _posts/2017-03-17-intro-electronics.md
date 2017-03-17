@@ -15,7 +15,7 @@ Als Inbetriebnahmetest möchte ich einer der im Kit enthaltenen LEDs zum Leuchte
 
 Um den nötigen Vorwiderstand zu bestimmen ist ein Blick in das Datenblatt für die LED notwendig. Der kontinuierlich erlaubte Vorwärtsspannung beträgt:
 
-\[I_F = 50 mA\]
+\\[I_F = 50 mA\\]
 
 Die Vorwärtsspannung der LED beträgt laut Datenblatt:
 
