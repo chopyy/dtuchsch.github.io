@@ -15,45 +15,31 @@ Als Inbetriebnahmetest möchte ich einer der im Kit enthaltenen LEDs zum Leuchte
 
 Um den nötigen Vorwiderstand zu bestimmen ist ein Blick in das Datenblatt für die LED notwendig. Der kontinuierlich erlaubte Vorwärtsspannung beträgt:
 
-```
-\\[I_F = 50 mA\\]
-```
+\[I_F = 50 mA\]
 
 Die Vorwärtsspannung der LED beträgt laut Datenblatt:
 
-```
-\\[U_F=  2 V\\]
-```
+\[U_F=  2 V\]
 
 Als Versorgungsspannung habe ich gewählt:
 
-```
-\\[U_0=3,3 V\\]
-```
+\[U_0=3,3 V\]
 
 Nach der Maschenregel ergibt sich für eine Reihenschaltung von Widerstand und LED:
 
-```
-\\[-U_0+I_F⋅R+U_F=0\\]
-```
+\[-U_0+I_F⋅R+U_F=0\]
 
 Hiermit lässt sich die Größe des Widerstands bestimmen:
 
-```
-\\[R=\frac{U_0-U_F}{I_F}\\]
-```
+\[R=\frac{U_0-U_F}{I_F}\]
 
 Bei einer Versorgungsspannung von U_0=3,3 V ergibt sich ein notwendiger Vorwiderstand von:
 
-```
-\\[R=26 \Omega\\]
-```
+\[R=26 \Omega\]
 
 Wird die Versorgungsspannung auf \\(U_0=5 V\\) erhöht, ergeben sich:
 
-```
-\\[R=60 \Omega\\]
-```
+\[R=60 \Omega\]
 
 Der Vorwiderstand kann ruhig größer gewählt werden, damit die LED nicht so hell leuchtet. Häufig ist dies sogar gewollt. Je größer der Vorwiderstand, desto kleiner der Strom, desto dunkler auch die LED.
 
