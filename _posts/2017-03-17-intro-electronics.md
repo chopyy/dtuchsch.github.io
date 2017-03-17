@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Elektronik-Kit und erste Inbetriebnahme mit LED-Schaltung"
-date:   2017-02-06 15:42:00
+date:   2017-03-17 12:00:00
 categories: electronics hardware
 ---
 
