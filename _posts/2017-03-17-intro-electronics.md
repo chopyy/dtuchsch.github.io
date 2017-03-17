@@ -7,7 +7,7 @@ categories: electronics hardware
 
 Auf der Suche nach einem Elektronikbaukasten bin ich auf das [Elegoo Electronics Fun Kit](https://www.amazon.de/Elegoo-Electronic-Breadboard-Kondensator-Potentiometer/dp/B01J79YG8G/ref=sr_1_fkmr0_1?ie=UTF8&qid=1489770984&sr=8-1-fkmr0&keywords=eleego+electronics+fun+kit) aufmerksam geworden. Das Kit enthält alle notwendigen Bauteile für einfache, prototypische Schaltungen für die Arbeit mit Mikrocontrollern. Besonders wichtig waren mir ein Steckbrett (Breadboard), damit ich ohne Löten Schaltungen zusammenbauen kann. Zudem war mir eine komfortable Spannungsversorgung wichtig.
 
-![](inhalt_eleegokit.jpg)
+![]({{ site.url }}/assets/inhalt_eleegokit.jpg)
 
 Das Kit enthält ein Spannungsversorgungsmodul, das auf das Steckbrett aufsteckbar ist. Über USB kann man das Steckbrett wahlweise mit einer Spannung von 3,3V oder 5V komfortabel versorgen.
 
@@ -32,8 +32,10 @@ Als Versorgungsspannung habe ich gewählt:
 ```
 
 Nach der Maschenregel ergibt sich für eine Reihenschaltung von Widerstand und LED:
+
 ```
 \[-U_0+I_F⋅R+U_F=0\]
+```
 
 Hiermit lässt sich die Größe des Widerstands bestimmen:
 
@@ -57,4 +59,4 @@ Der Vorwiderstand kann ruhig größer gewählt werden, damit die LED nicht so he
 
 Die folgende Abbildung zeigt die Inbetriebnahme mit einem Vorwiderstand von \(R = 100 \Omega\)
 
-![](LED.png)
+![]({{ site.url }}/assets/LED.png)
