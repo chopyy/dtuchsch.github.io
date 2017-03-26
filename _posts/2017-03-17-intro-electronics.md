@@ -33,7 +33,7 @@ Hiermit lässt sich die Größe des Widerstands bestimmen:
 
 \\[R=\frac{U_0-U_F}{I_F}\\]
 
-Bei einer Versorgungsspannung von U_0=3,3 V ergibt sich ein notwendiger Vorwiderstand von:
+Bei einer Versorgungsspannung von \\(U_0=3,3 V\\) ergibt sich ein notwendiger Vorwiderstand von:
 
 \\[R=26 \Omega\\]
 
