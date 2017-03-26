@@ -23,11 +23,11 @@ I'm using a Raspberry PI 2 with PREEMPT_RT patched Linux kernel. Please note tha
 
 The base clock frequency of the Raspberry PI is 19.2 MHz.
 
-\[ f_{base} = 19.2 MHz \]
+\\[ f_{base} = 19.2 MHz \\]
 
-Let's say you want a PWM frequency of \\(f = 40 kHz\\), which gives a time period of \\(T = 25 \mus\\). Given the base clock frequency and the PWM frequency you are able to calculate the clock divider and the ticks for the timer:
+Let's say you want a PWM frequency of \\(f = 40 kHz\\), which gives a time period of \\(T = 25 \mu s\\). Given the base clock frequency and the PWM frequency you are able to calculate the clock divider and the ticks for the timer:
 
-\[ \frac{f_{base}}{f_{PWM}} = \frac{19.2 MHz}{40 kHz} = 480 \]
+\\[ \frac{f_{base}}{f_{PWM}} = \frac{19.2 MHz}{40 kHz} = 480 \\]
 
 The factor of 480 will now be separated on the clock divider and the range value.
 
@@ -35,7 +35,7 @@ If you want a high resolution, you may choose the range value greater than the c
 
 If you divide the PWM period by the range value, you will get the time passed every timer step:
 
-\[ \frac{T}{240} = \frac{25 \mus}{240} = 0,1042 \mus \]
+\\[ \frac{T}{240} = \frac{25 \mu s}{240} = 0,1042 \mu s \\]
 
 ## Implementation in Modern C++
 
