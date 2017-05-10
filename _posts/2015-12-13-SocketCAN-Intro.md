@@ -2,7 +2,7 @@
 layout: post
 title:  "Introduction to SocketCAN"
 date:   2015-12-13 22:46:00
-categories: Linux, CAN
+categories: Linux CAN SocketCAN
 ---
 
 > This document gives a brief introduction on how to use SocketCAN under Linux. SocketCAN is an utility for Linux to use Controller Area Network (CAN) fieldbus.
