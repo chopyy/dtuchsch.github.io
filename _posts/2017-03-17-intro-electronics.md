@@ -13,7 +13,7 @@ Das Kit enthält ein Spannungsversorgungsmodul, das auf das Steckbrett aufsteckb
 
 Als Inbetriebnahmetest möchte ich einer der im Kit enthaltenen LEDs zum Leuchten bringen. Die LED darf nicht ohne Weiteres an die Spannungsversorgung angeschlossen werden. Ein Vorwiderstand ist notwendig, um den Strom, der durch die LED fließt, zu limitieren. Die Datenblätter zu den im Kit enthaltenen Bauteilen stehen auf der Webseite des Herstellers im [Downloadbereich](http://www.elegoo.com/download/) bereit.
 
-Um den nötigen Vorwiderstand zu bestimmen ist ein Blick in das Datenblatt für die LED notwendig. Der kontinuierlich erlaubte Vorwärtsspannung beträgt:
+Um den nötigen Vorwiderstand zu bestimmen ist ein Blick in das Datenblatt für die darin enthaltene LED notwendig. Der kontinuierlich erlaubte Vorwärtsstrom beträgt:
 
 \\[I_F = 50 mA\\]
 
