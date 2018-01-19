@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "BenQ ZOWIE XL2411 144Hz Monitor Einstellungen"
-date:   2017-03-25 13:49:00
+date:   2018-01-19 13:49:00
 categories: benq monitor
 ---
 
