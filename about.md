@@ -10,15 +10,18 @@ Main objective of this website is to keep things in mind. Some posts could be al
 
 # Daily Work
 
-I work as a software development engineer in the area of AUTOSAR Adaptive for Vector Informatik GmbH, Germany. I'm passionate about programming - programming in C++ and C in particular, control engineering, digital signal processing, embedded and real-time systems.
+I work as a software development engineer in the area of AUTOSAR Adaptive for Vector Informatik GmbH, Germany. I'm passionate about  automotive systems engineering, functional safety, programming (programming in C++ and C in particular), control engineering, digital signal processing, embedded and real-time systems.
 
-Being open-minded, innovative, creative during design and implementation phase is important to me. At the same time of being creative, i think it's mandatory to rely on proven-in-use concepts, standards and tools to get things done.
+Being open-minded, innovative, creative during design and implementation phase is important to me. At the same time of being creative, I think it's mandatory to rely on proven-in-use concepts, standards and tools to get things done.
 
 # Education
 
-I have a MEng in mechatronics and a BSc degree in drive systems and mechatronics.
+* Master of Engineering (MEng) in mechatronics 
+* Bachelor of Science (BSc) degree in drive systems and mechatronics
 
 # Publications
+
+During my time as a research engineer in the area of human-robot collaboration I had the chance to be one of the authors of three papers.
 
 * Daniel Tuchscherer and Frank Tränkle. "A Multi-Platform Modern C++ Framework for Safety-Critical Embedded Software." In Proceedings of the Embedded World Conference 2018.
 * Daniel Tuchscherer, Alexander Weibert, and Frank Tränkle. 2016. "Modern C++ as a Modeling Language for Automated Driving and Human-Robot Collaboration." In Proceedings of the ACM/IEEE 19th International Conference on Model Driven Engineering Languages and Systems (MODELS '16). ACM, New York, NY, USA, 136-142. DOI: http://dx.doi.org/10.1145/2976767.2976772
