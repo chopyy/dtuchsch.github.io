@@ -6,11 +6,11 @@ permalink: /about/
 
 # What is this website about?
 
-Main objective of this website is to keep things in mind. Some posts could be also helpful to others. Most of the posts will be in English. Off-topic related stuff is in German.
+Main objective of this website is to keep things in mind and share my thoughts about automotive embedded software development. Some posts could be also helpful to others. Most of the posts will be in English. Off-topic related stuff is in German.
 
 # Daily Work
 
-I work as a software development engineer in the area of AUTOSAR Adaptive for Vector Informatik GmbH, Germany. I'm passionate about  automotive systems engineering, functional safety, programming (programming in C++ and C in particular), control engineering, digital signal processing, embedded and real-time systems.
+I work as a software development engineer in the area of AUTOSAR Adaptive for Vector Informatik GmbH, Germany. I'm passionate about automotive systems engineering, functional safety, programming (programming in C++ and C in particular), control engineering, digital signal processing, embedded and real-time systems.
 
 Being open-minded, innovative, creative during design and implementation phase is important to me. At the same time of being creative, I think it's mandatory to rely on proven-in-use concepts, standards and tools to get things done.
 
