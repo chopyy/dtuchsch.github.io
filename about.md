@@ -4,8 +4,6 @@ title: About
 permalink: /about/
 ---
 
-# What is this website about?
-
 Main objective of this website is to keep things in mind and share my thoughts about automotive embedded software development. Some posts could be also helpful to others. Most of the posts will be in English. Off-topic related stuff is in German.
 
 # Daily Work
@@ -34,9 +32,9 @@ During my time as a research engineer in the area of human-robot collaboration I
 * static code analysis
 * continuous improvement
 
-# Things I like
+# I Like
 
 * design patterns
-* high quality code: clean, maintainable, reusable & readable code
+* producing high quality code in the team: clean, maintainable, reusable & readable code
 * C++ templates / generic programming
 * simplification

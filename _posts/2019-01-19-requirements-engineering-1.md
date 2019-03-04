@@ -41,27 +41,21 @@ Follow one defined sentence structure when writing requirements. This makes it e
 
 I follow the pattern of the The German Association of the Automotive Industry called VDA[^VDA]:
 
-**[Condition]** Time aspect. State of the system or the environment
-
-**[Subject]** The executing entity (e.g. system, component, operator)
-
-**[Requirement Signal Word]** shall / should
-
-**[Action]** Verbs
-
-**[Object]** The system part of the action
+---|---
+**[Condition]** | Time aspect. State of the system or the environment
+**[Subject]** | The executing entity (e.g. system, component, operator)
+**[Requirement Signal Word]** | shall / should
+**[Action]** | Verbs
+**[Object]** | The system part of the action
 
 ### Example 
 
-**[Condition]**           If the temperature exceeds 20°C
-
-**[Subject]** -> who      the electronic control unit
-
-**[Requirement Signal Word]** shall
-
-**[Action]** -> how           deactivate
-
-**[Object]** -> whom          the motor.
+---|---
+**[Condition]** | If the temperature exceeds 20°C
+**[Subject]** | the electronic control unit (-> who)
+**[Requirement Signal Word]** | shall
+**[Action]** | deactivate (-> how)
+**[Object]** | the motor. (-> whom)
 
 ## Requirements Shall Bring Value
 
