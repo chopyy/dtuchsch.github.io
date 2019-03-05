@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Why domain knowledge is important and being a programming expert is not everything"
+title:  "Being a programming expert is not everything"
 date:   2019-02-18 13:49:00
 categories: engineering software development
 ---
