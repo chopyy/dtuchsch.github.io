@@ -2,7 +2,7 @@
 title: tuschenskis blog
 email: daniel.tuchscherer@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Hi! I'm Daniel. I work as a software development engineer. I'm passionate about automotive systems engineering, Modern C++, embedded systems and control engineering.
+  Hi! I'm Daniel. I work as a development engineer in the automotive domain. I'm passionate about automotive systems engineering, Modern C++, embedded systems and control engineering.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://dtuchsch.github.io" # the base hostname & protocol for your site
 
@@ -20,6 +20,8 @@ kramdown:
   auto_ids: true
   syntax_highlighter: rouge
 theme: jekyll-theme-cayman
+
+paginate: 5
 
 plugins:
   - jekyll-seo-tag
