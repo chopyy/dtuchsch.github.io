@@ -2,7 +2,7 @@
 layout: post
 title:  "Being a programming expert is not everything"
 date:   2019-02-18 13:49:00
-categories: engineering software development
+categories: engineering automotive software programming
 ---
 
 > I appreciate that there's an increasing interest in using the C++ programming language for (automotive) embedded software development. Sentences like "I really need to become a C++ expert" or "we don't need to hire automotive engineers anymore, but C++ experts of any domain" reflect people care too much about being the best coder and the programming language in use. However, I experience that the programming language only covers one small aspect of the full engineering needed to successfully develop complex embedded systems in the automotive domain. We need to focus on the "big picture".

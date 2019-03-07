@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "My Two Cents on Writing Automotive (Software) Requirements"
+title:  "Two cents on writing (automotive software) requirements"
 date:   2019-02-10 21:02:00
 categories: engineering automotive software
 ---
