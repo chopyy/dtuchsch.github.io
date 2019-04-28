@@ -8,9 +8,9 @@ Main objective of this website is to keep things in mind and share my thoughts a
 
 # Daily Work
 
-I work as a software development engineer in the area of AUTOSAR Adaptive for Vector Informatik GmbH, Germany. I'm passionate about automotive systems engineering, functional safety, programming (programming in C++ and C in particular), control engineering, digital signal processing, embedded and real-time systems.
+I work as a safety software architect for automated driving systems. I'm passionate about automotive systems engineering, functional safety, programming (programming in C++ and C in particular), control engineering, digital signal processing, embedded and real-time systems.
 
-Being open-minded, innovative, creative during design and implementation phase is important to me. At the same time of being creative, I think it's mandatory to rely on proven-in-use concepts, standards and tools to get things done.
+Being open-minded, innovative, analytic, creative during design and implementation phase is important to me. At the same time of being creative, I think it's mandatory to rely on proven-in-use concepts, standards and tools to get things done.
 
 # Education
 
