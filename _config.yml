@@ -1,6 +1,6 @@
 # Site settings
 title: chopys blog
-email: daniel.tuchscherer@gmail.com
+email: cs.chopy@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   automotive software engineer - tech - gaming nerd
 baseurl: "" # the subpath of your site, e.g. /blog/
