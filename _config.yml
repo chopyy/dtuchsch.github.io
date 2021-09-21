@@ -27,3 +27,5 @@ paginate: 5
 
 plugins:
   - jekyll-seo-tag
+  
+google_analytics: G-BFEBLP7QYY
