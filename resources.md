@@ -11,7 +11,7 @@ This page is a collection of online resources, books and papers about systems en
 * [Sourcemaking: Design patterns](https://sourcemaking.com/)
 * Martin, Robert C. Clean code: a handbook of agile software craftsmanship. Pearson Education, 2009.
 
-## (Modern) C++
+## Basic C++
 
 * [ISO C++ FAQ](https://isocpp.org/faq)
 * [https://www.youtube.com/user/CppCon](https://www.youtube.com/user/CppCon)
