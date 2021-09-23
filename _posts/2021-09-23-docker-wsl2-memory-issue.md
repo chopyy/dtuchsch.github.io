@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Stopping Docker from Consuming  of Docker for WSL2"
+title:  "Fixing Docker's High Memory Consumption Issue for WSL2"
 date:   2021-09-23 16:21:00
 categories: docker
 ---
